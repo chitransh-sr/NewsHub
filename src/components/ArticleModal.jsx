@@ -10,6 +10,7 @@ import {
   Volume2,
   Check
 } from "lucide-react";
+import { formatCategory, formatSource } from "../utils/format";
 
 export const ArticleModal = ({ 
   article, 
@@ -40,10 +41,10 @@ export const ArticleModal = ({
         <div className="modal-header-bar">
           <div className="modal-header-meta">
             <span className="modal-category-chip">
-              {article.category ? article.category.toUpperCase() : "BREAKING"}
+              {formatCategory(article.category, "BREAKING")}
             </span>
             <span className="modal-source-pill">
-              <Building2 size={13} className="inline-icon" /> {article.source_name || "Official Source"}
+              <Building2 size={13} className="inline-icon" /> {formatSource(article.source_name || article.source_id, "Official Source")}
             </span>
           </div>
 

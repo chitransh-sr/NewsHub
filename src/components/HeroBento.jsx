@@ -1,5 +1,6 @@
 import React from "react";
 import { Clock, Bookmark, ArrowUpRight, Flame, Share2 } from "lucide-react";
+import { formatCategory, formatSource } from "../utils/format";
 
 export const HeroBento = ({ 
   articles, 
@@ -75,7 +76,7 @@ export const HeroBento = ({
 
               <div className="bento-hero-footer">
                 <div className="bento-meta-group">
-                  <span className="bento-source-name">{hero.source_name || "Global News"}</span>
+                  <span className="bento-source-name">{formatSource(hero.source_name || hero.source_id, "Global News")}</span>
                   <span className="bento-dot">•</span>
                   <span className="bento-time">
                     <Clock size={12} className="inline-clock" />
@@ -120,7 +121,7 @@ export const HeroBento = ({
               <div className="bento-spotlight-body">
                 <div className="spotlight-top-meta">
                   <span className="spotlight-badge">
-                    {item.category ? item.category.toUpperCase() : "TRENDING"}
+                    {formatCategory(item.category, "TRENDING")}
                   </span>
                   <button 
                     className={`bento-mini-bookmark ${isBookmarked(item) ? "saved" : ""}`}
@@ -138,7 +139,7 @@ export const HeroBento = ({
                 <h3 className="bento-spotlight-title">{item.title}</h3>
 
                 <div className="bento-spotlight-meta">
-                  <span className="spotlight-source">{item.source_name || "News Wire"}</span>
+                  <span className="spotlight-source">{formatSource(item.source_name || item.source_id, "News Wire")}</span>
                   <span className="bento-dot">•</span>
                   <span className="spotlight-time">{formatTime(item.pubDate)}</span>
                 </div>

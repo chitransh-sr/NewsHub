@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Clock, Bookmark, ArrowUpRight, Share2, Compass } from "lucide-react";
+import { formatCategory, formatSource } from "../utils/format";
 
 export const Card = ({ 
   articles, 
@@ -63,7 +64,7 @@ export const Card = ({
               
               <div className="card-floating-badges">
                 <span className="card-category-tag">
-                  {article.category ? article.category.toUpperCase() : "NEWS"}
+                  {formatCategory(article.category, "NEWS")}
                 </span>
 
                 <div className="card-floating-actions" onClick={(e) => e.stopPropagation()}>
@@ -89,7 +90,7 @@ export const Card = ({
 
             <div className="card-body">
               <div className="card-source-row">
-                <span className="card-source">{article.source_name || "News Wire"}</span>
+                <span className="card-source">{formatSource(article.source_name || article.source_id)}</span>
                 <span className="card-dot">•</span>
                 <span className="card-time">
                   <Clock size={12} className="inline-clock" />

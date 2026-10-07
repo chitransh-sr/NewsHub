@@ -337,7 +337,7 @@ const NewsApp = () => {
             <div className="section-header-row">
               <div className="heading-group">
                 <span className="section-eyebrow">
-                  {search ? "SEARCH RESULTS" : `${activeCategory.toUpperCase()} DESK`}
+                  {search ? "SEARCH RESULTS" : `${(typeof activeCategory === "string" ? activeCategory : "NEWS").toUpperCase()} DESK`}
                 </span>
                 <h2 className="section-main-title">
                   {search ? `Headlines matching "${search}"` : `Latest in ${activeCategory}`}
